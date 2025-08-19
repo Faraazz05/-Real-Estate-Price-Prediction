@@ -77,10 +77,13 @@ Model training & evaluation
 
 House price predictor with sliders
 
-
+## Multiple Regression ML | Program Walkthrough (Video)
+[streamlit-app-2025-08-19-19-08-42.webm](https://github.com/user-attachments/assets/f7079202-1611-4215-80d9-34feed7d407f)
 
 ## 📌 Notes
 
 Data is synthetic, generated with a formula + noise.
 
 This project is for educational purposes to demonstrate regression and interactive ML apps.
+
+
