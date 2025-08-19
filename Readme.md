@@ -35,7 +35,7 @@ real-estate-regression/
 
 ### 1. Clone repo & install dependencies
 ```bash
-git clone https://github.com/yourusername/real-estate-regression.git
+git clone https://github.com/yourusername/Real-Estate-Price-Prediction.git
 cd real-estate-regression
 pip install -r requirements.txt
 
