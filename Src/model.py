@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 
 class RealEstateModel:
@@ -13,6 +14,16 @@ class RealEstateModel:
     def __init__(self):
         self.model = LinearRegression()
         self.is_trained = False
+
+
+    def predict(self, X):
+        return self.model.predict(X)
+
+    def get_coefficients(self, feature_names):
+        return pd.DataFrame({
+            "Feature": feature_names,
+            "Coefficient": self.model.coef_
+        })
 
     def train(self, X: pd.DataFrame, y: pd.Series, test_size: float = 0.2, random_state: int = 42):
         """
@@ -54,6 +65,8 @@ class RealEstateModel:
         }
 
         return metrics
+    
+
 
     def get_coefficients(self, feature_names: list) -> pd.DataFrame:
         """
@@ -92,3 +105,39 @@ class RealEstateModel:
             raise ValueError("Model is not trained yet.")
 
         return self.model.predict(X_new)
+    
+    def train(self, X, y):
+        from sklearn.linear_model import LinearRegression
+        from sklearn.model_selection import train_test_split
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
+
+        self.model = LinearRegression()
+        self.model.fit(X_train, y_train)
+
+        y_pred = self.model.predict(X_test)
+
+        mse = mean_squared_error(y_test, y_pred)
+        rmse = np.sqrt(mse)
+        mae = mean_absolute_error(y_test, y_pred)
+        r2 = r2_score(y_test, y_pred)
+
+        return {
+            "mse": mse,
+            "rmse": rmse,
+            "mae": mae,
+            "r2": r2
+        }
+
+    def predict(self, X):
+        return self.model.predict(X)
+
+    def get_coefficients(self, feature_names):
+        return pd.DataFrame({
+            "Feature": feature_names,
+            "Coefficient": self.model.coef_
+        })
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
