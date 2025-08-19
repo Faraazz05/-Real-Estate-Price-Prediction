@@ -137,17 +137,28 @@ elif choice == "⚙️ Model Training":
     st.markdown("### 📈 Coefficients")
     st.dataframe(model.get_coefficients(X.columns))
 
-    # Residual plot using Yellowbrick
-    st.markdown("### 🔍 Residual Analysis")
     from yellowbrick.regressor import ResidualsPlot
+    import joblib
 
-    visualizer = ResidualsPlot(model.model)  # pass the underlying sklearn model
-    visualizer.fit(X, y)
-    visualizer.score(X, y)
+    st.markdown("### 🔍 Residual Analysis")
 
-    fig, ax = plt.subplots()
-    visualizer.show(outpath=None, ax=None)  # don't pass ax manually
+    # Train the model (already fitted above)
+    from sklearn.linear_model import LinearRegression
+    from sklearn.model_selection import train_test_split
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    lin_model = LinearRegression()
+    visualizer = ResidualsPlot(lin_model)
+
+    visualizer.fit(X_train, y_train)
+    visualizer.score(X_test, y_test)
+
+    # Instead of visualizer.show(), use the fig object directly
+    fig = visualizer.fig  
     st.pyplot(fig)
+
+    # Save trained model for later use in prediction page
+    joblib.dump(lin_model, "linear_model.pkl")
 
 
 
