@@ -86,7 +86,7 @@ model = RealEstateModel()
 
 # ---------------------------
 # PAGE 1: DATA OVERVIEW
-# ---------------------------
+# -------------------
 if choice == "📊 Data Overview":
     st.header("📊 Data Overview")
     st.markdown('<div class="card">Here’s the dataset used for training and predictions:</div>', unsafe_allow_html=True)
@@ -96,19 +96,13 @@ if choice == "📊 Data Overview":
     st.markdown("### 🔎 Summary Statistics")
     st.dataframe(df.describe())
 
-    st.markdown("### 🔗 Correlation Heatmap")
-    corr = df.corr()
-    fig, ax = plt.subplots(figsize=(8, 6))
-    sns.heatmap(corr, annot=True, cmap="Blues", fmt=".2f", ax=ax)
-    st.pyplot(fig)   
-    st.markdown("### 🔗 Correlation Heatmap")
+    st.subheader("🔗 Correlation Heatmap")
 
     # Select only numeric columns
     numeric_df = df.select_dtypes(include=['float64', 'int64'])
 
     if not numeric_df.empty:
         corr = numeric_df.corr()
-
         fig, ax = plt.subplots(figsize=(8, 6))
         sns.heatmap(corr, annot=True, cmap="Blues", fmt=".2f", ax=ax)
         st.pyplot(fig)
@@ -130,20 +124,31 @@ elif choice == "⚙️ Model Training":
     # Train model
     metrics = model.train(X, y)
 
+    # Save trained model for reuse
+    import joblib
+    joblib.dump(model.model, "linear_model.pkl")  # save the underlying sklearn model
+
     st.markdown("### 📊 Model Performance")
     st.markdown(f"<div class='metric-box'><strong>RMSE:</strong> {metrics['rmse']:.2f}</div>", unsafe_allow_html=True)
     st.markdown(f"<div class='metric-box'><strong>MSE:</strong> {metrics['mse']:.2f}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='metric-box'><strong>MAE:</strong> {metrics['mae']:.2f}</div>", unsafe_allow_html=True)
     st.markdown(f"<div class='metric-box'><strong>R²:</strong> {metrics['r2']:.2f}</div>", unsafe_allow_html=True)
 
     st.markdown("### 📈 Coefficients")
     st.dataframe(model.get_coefficients(X.columns))
 
-    # Residual plot
+    # Residual plot using Yellowbrick
     st.markdown("### 🔍 Residual Analysis")
-    y_pred = model.predict(X)
-    fig, ax = plt.subplots(figsize=(7, 5))
-    residual_plot(y, y_pred, ax=ax)
+    from yellowbrick.regressor import ResidualsPlot
+
+    visualizer = ResidualsPlot(model.model)  # pass the underlying sklearn model
+    visualizer.fit(X, y)
+    visualizer.score(X, y)
+
+    fig, ax = plt.subplots()
+    visualizer.show(outpath=None, ax=None)  # don't pass ax manually
     st.pyplot(fig)
+
 
 
 # ---------------------------
@@ -165,21 +170,28 @@ elif choice == "🏡 Price Prediction":
         age_of_house = st.slider("Age of House (years)", 0, 50, 10)
 
     if st.button("✨ Predict Price"):
-        new_house = pd.DataFrame({
-            "square_feet": [square_feet],
-            "num_bedrooms": [num_bedrooms],
-            "num_bathrooms": [num_bathrooms],
-            "dist_to_city_center": [dist_to_city_center],
-            "age_of_house": [age_of_house],
-        })
+        import joblib, os
 
-        pred_price = model.predict(new_house)[0]
+        if os.path.exists("linear_model.pkl"):
+            trained_model = joblib.load("linear_model.pkl")
 
-        st.markdown(
-            f"""
-            <div class="success-box">
-                <h2>💰 Estimated Price: ₹{pred_price:,.0f}</h2>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+            new_house = pd.DataFrame({
+                "square_feet": [square_feet],
+                "num_bedrooms": [num_bedrooms],
+                "num_bathrooms": [num_bathrooms],
+                "dist_to_city_center": [dist_to_city_center],
+                "age_of_house": [age_of_house],
+            })
+
+            pred_price = trained_model.predict(new_house)[0]
+
+            st.markdown(
+                f"""
+                <div class="success-box">
+                    <h2>💰 Estimated Price: ₹{pred_price:,.0f}</h2>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.error("⚠️ Model not trained yet. Please go to '⚙️ Model Training' and train the model first.")
