@@ -8,7 +8,7 @@ The project includes data generation, exploratory analysis, model training, and 
 
 ## 📂 Project Structure
 
-real-estate-regression/
+## real-estate-regression/
 │
 ├── data/
 │ ├── dataset.csv # Generated dataset
