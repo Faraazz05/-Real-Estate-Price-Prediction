@@ -9,6 +9,7 @@ The project includes data generation, exploratory analysis, model training, and 
 ## 📂 Project Structure
 
 ## real-estate-regression/
+```Bash 
 │
 ├── data/
 │ ├── dataset.csv # Generated dataset
@@ -28,8 +29,8 @@ The project includes data generation, exploratory analysis, model training, and 
 ├── .gitignore # Ignore unnecessary files
 └── README.md # Project documentation
 
-
----
+````
+-----
 
 ## 🚀 Getting Started
 
@@ -47,8 +48,8 @@ jupyter notebook notebooks/exploration.ipynb
 
 4. Run Streamlit app
 streamlit run app.py
-
-📊 Features
+```
+## 📊 Features
 
 Synthetic Real Estate Dataset
 
@@ -78,7 +79,7 @@ House price predictor with sliders
 
 
 
-📌 Notes
+## 📌 Notes
 
 Data is synthetic, generated with a formula + noise.
 
