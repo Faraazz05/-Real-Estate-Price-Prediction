@@ -12,22 +12,24 @@ This project covers the full mini-ML lifecycle: data generation, exploration, mo
 
 ```bash
 
-real-estate-regression/
+Real-Estate-Price-Prediction/
 │
-├── data/
-│   ├── dataset.csv              # Synthetic housing dataset
-│   └── generate_data.py         # Dataset generation script
+├── corpus/ 
+│   └── synth_forge.py         # Dataset generation script
 │
-├── notebooks/
-│   └── exploration.ipynb        # EDA + baseline regression analysis
+├── lab/
+│   └── ground_truth.ipynb        # EDA + baseline regression analysis
 │
-├── src/
-│   ├── **init**.py
-│   ├── data_loader.py           # Data loading and train-test split
-│   ├── model.py                 # Multiple linear regression model
-│   └── utils.py                 # Metrics and helper utilities
+├── forge/
+│   ├── __init__.py
+│   ├── measures.py           # Data loading and train-test split
+│   ├── regressor.py                 # Multiple linear regression model
+│   └── ingest.py                 # Metrics and helper utilities
 │
-├── app.py                       # Streamlit application (3 pages)
+├── VScode/
+│   └─ settings.json  
+│       
+├── app.py                       # Streamlit application 
 ├── requirements.txt             # Project dependencies
 ├── .gitignore                   # Ignored files
 └── README.md                    # Documentation
@@ -41,9 +43,9 @@ real-estate-regression/
 ### 1. Clone the repository and install dependencies
 
 ```bash
-git clone https://github.com/Faraazz05/real-estate-regression.git
+git clone https://github.com/Faraazz05/Real-Estate-Price-Prediction
 
-cd real-estate-regression
+cd real-estate-Price-Prediction
 
 pip install -r requirements.txt
 ````
@@ -51,13 +53,13 @@ pip install -r requirements.txt
 ### 2. Generate the dataset
 
 ```bash
-python data/generate_data.py
+python corpus/synth_forge.py
 ```
 
 ### 3. Explore the data and model
 
 ```bash
-jupyter notebook notebooks/exploration.ipynb
+jupyter-notebook lab/ground_truth.ipynb
 ```
 
 ### 4. Run the Streamlit application
@@ -84,7 +86,7 @@ The dataset is **synthetically generated** to simulate realistic housing price b
 
 * House price
 
-Noise is intentionally added to reflect real-world variability.
+*Noise is intentionally added to reflect real-world variability.*
 
 ---
 
