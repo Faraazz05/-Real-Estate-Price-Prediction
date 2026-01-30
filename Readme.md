@@ -10,27 +10,22 @@ This project covers the full mini-ML lifecycle: data generation, exploration, mo
 
 ## 📂 Project Structure
 
-<<<<<<< HEAD
-``` bash
+```bash
 
 real-estate-regression/
-=======
-## real-estate-regression/
-```Bash 
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 │
-├── corpus/
-│   ├── raw_prices.csv              # Synthetic housing dataset
-│   └── synth_forge.py         # Dataset generation script
+├── data/
+│   ├── dataset.csv              # Synthetic housing dataset
+│   └── generate_data.py         # Dataset generation script
 │
-├── lab/
-│   └── ground_truth.ipynb        # EDA + baseline regression analysis
+├── notebooks/
+│   └── exploration.ipynb        # EDA + baseline regression analysis
 │
-├── forge/
-│   ├── **__init__**.py
-│   ├── measures.py           # Data loading and train-test split
-│   ├── regressor.py                 # Multiple linear regression model
-│   └── ingest.py                 # Metrics and helper utilities
+├── src/
+│   ├── **init**.py
+│   ├── data_loader.py           # Data loading and train-test split
+│   ├── model.py                 # Multiple linear regression model
+│   └── utils.py                 # Metrics and helper utilities
 │
 ├── app.py                       # Streamlit application (3 pages)
 ├── requirements.txt             # Project dependencies
@@ -38,23 +33,15 @@ real-estate-regression/
 └── README.md                    # Documentation
 
 ````
-<<<<<<< HEAD
 
 ---
-=======
------
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository and install dependencies
 
 ```bash
-<<<<<<< HEAD
-git clone https://github.com/Faraazz05/real-estate-regression.git
-=======
-git clone https://github.com/yourusername/Real-Estate-Price-Prediction.git
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
+git clone https://github.com/yourusername/real-estate-regression.git
 cd real-estate-regression
 pip install -r requirements.txt
 ````
@@ -62,13 +49,13 @@ pip install -r requirements.txt
 ### 2. Generate the dataset
 
 ```bash
-python corpus/synth_forge.py
+python data/generate_data.py
 ```
 
 ### 3. Explore the data and model
 
 ```bash
-jupyter notebook lab/ground_truth.ipynb
+jupyter notebook notebooks/exploration.ipynb
 ```
 
 ### 4. Run the Streamlit application
@@ -76,12 +63,8 @@ jupyter notebook lab/ground_truth.ipynb
 ```bash
 streamlit run app.py
 ```
-<<<<<<< HEAD
 
 ---
-=======
-## 📊 Features
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 ## 📊 Dataset Overview
 
@@ -116,7 +99,6 @@ Noise is intentionally added to reflect real-world variability.
 
 Additional analysis includes:
 
-<<<<<<< HEAD
 * Regression coefficients
 * Residual distribution
 * Feature influence interpretation
@@ -124,16 +106,9 @@ Additional analysis includes:
 ---
 
 ## 🖥️ Streamlit Application (3 Pages)
-=======
-## Multiple Regression ML | Program Walkthrough (Video)
-[streamlit-app-2025-08-19-19-08-42.webm](https://github.com/user-attachments/assets/f7079202-1611-4215-80d9-34feed7d407f)
-
-## 📌 Notes
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 The Streamlit app provides an interactive interface divided into three logical pages:
 
-<<<<<<< HEAD
 1. **Dataset Explorer**
 
    * View raw data
@@ -162,7 +137,7 @@ Forged with intent.
 __fz_anchor__ = (
     1755693780,
     "time > memory"
-) 
+)
 ```
 
 ---
@@ -175,15 +150,4 @@ __fz_anchor__ = (
   * Regression modeling
   * ML workflow clarity
   * Streamlit-based ML app deployment
-* Designed as a **mini but complete ML project**, suitable for learning and portfolio use.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-=======
-This project is for educational purposes to demonstrate regression and interactive ML apps.
-
-
->>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
+* Designed as a **mini but complete ML project**, suitable for learning.
