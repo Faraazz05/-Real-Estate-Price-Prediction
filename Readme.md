@@ -10,9 +10,14 @@ This project covers the full mini-ML lifecycle: data generation, exploration, mo
 
 ## 📂 Project Structure
 
+<<<<<<< HEAD
 ``` bash
 
 real-estate-regression/
+=======
+## real-estate-regression/
+```Bash 
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 │
 ├── corpus/
 │   ├── raw_prices.csv              # Synthetic housing dataset
@@ -33,15 +38,23 @@ real-estate-regression/
 └── README.md                    # Documentation
 
 ````
+<<<<<<< HEAD
 
 ---
+=======
+-----
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository and install dependencies
 
 ```bash
+<<<<<<< HEAD
 git clone https://github.com/Faraazz05/real-estate-regression.git
+=======
+git clone https://github.com/yourusername/Real-Estate-Price-Prediction.git
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 cd real-estate-regression
 pip install -r requirements.txt
 ````
@@ -63,8 +76,12 @@ jupyter notebook lab/ground_truth.ipynb
 ```bash
 streamlit run app.py
 ```
+<<<<<<< HEAD
 
 ---
+=======
+## 📊 Features
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 ## 📊 Dataset Overview
 
@@ -99,6 +116,7 @@ Noise is intentionally added to reflect real-world variability.
 
 Additional analysis includes:
 
+<<<<<<< HEAD
 * Regression coefficients
 * Residual distribution
 * Feature influence interpretation
@@ -106,9 +124,16 @@ Additional analysis includes:
 ---
 
 ## 🖥️ Streamlit Application (3 Pages)
+=======
+## Multiple Regression ML | Program Walkthrough (Video)
+[streamlit-app-2025-08-19-19-08-42.webm](https://github.com/user-attachments/assets/f7079202-1611-4215-80d9-34feed7d407f)
+
+## 📌 Notes
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
 
 The Streamlit app provides an interactive interface divided into three logical pages:
 
+<<<<<<< HEAD
 1. **Dataset Explorer**
 
    * View raw data
@@ -157,3 +182,8 @@ __fz_anchor__ = (
 ## 📄 License
 
 This project is licensed under the **MIT License**.
+=======
+This project is for educational purposes to demonstrate regression and interactive ML apps.
+
+
+>>>>>>> 1c580ab52cac8003634ecf9c78a40399d7bd4f5b
