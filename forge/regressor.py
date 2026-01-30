@@ -7,10 +7,6 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 
 class RealEstateModel:
-    """
-    Multiple Linear Regression model for real estate price prediction.
-    """
-
     def __init__(self):
         self.model = LinearRegression()
         self.is_trained = False
@@ -26,25 +22,6 @@ class RealEstateModel:
         })
 
     def train(self, X: pd.DataFrame, y: pd.Series, test_size: float = 0.2, random_state: int = 42):
-        """
-        Train the linear regression model on given data.
-
-        Parameters
-        ----------
-        X : pd.DataFrame
-            Features.
-        y : pd.Series
-            Target variable (price).
-        test_size : float
-            Fraction of data to use for testing.
-        random_state : int
-            Random seed for reproducibility.
-
-        Returns
-        -------
-        dict
-            Training and testing metrics (RMSE, R²).
-        """
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=test_size, random_state=random_state
         )
@@ -69,14 +46,6 @@ class RealEstateModel:
 
 
     def get_coefficients(self, feature_names: list) -> pd.DataFrame:
-        """
-        Get model coefficients with feature names.
-
-        Returns
-        -------
-        pd.DataFrame
-            Coefficients table.
-        """
         if not self.is_trained:
             raise ValueError("Model is not trained yet.")
 
@@ -88,19 +57,6 @@ class RealEstateModel:
         return coefs
 
     def predict(self, X_new: pd.DataFrame) -> np.ndarray:
-        """
-        Predict price for new input data.
-
-        Parameters
-        ----------
-        X_new : pd.DataFrame
-            New feature data.
-
-        Returns
-        -------
-        np.ndarray
-            Predicted prices.
-        """
         if not self.is_trained:
             raise ValueError("Model is not trained yet.")
 

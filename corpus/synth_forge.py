@@ -35,5 +35,5 @@ def generate_real_estate_data(n_samples: int = 1000, random_state: int = 42):
 
 if __name__ == "__main__":
     df = generate_real_estate_data()
-    df.to_csv("data/dataset.csv", index=False)
+    df.to_csv("corpus/raw_prices.csv", index=False)
     print("✅ Dataset generated and saved as data/dataset.csv")

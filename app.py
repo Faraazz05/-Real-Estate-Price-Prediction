@@ -3,9 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from Src.data_loader import load_data, split_features_target
-from Src.model import RealEstateModel
-from Src.utils import residual_plot
+from forge.ingest import load_data, split_features_target
+from forge.regressor import RealEstateModel
+from forge.measures import residual_plot
+
+# 𓋹 Faraz
+__fz_anchor__ = (
+    1755693780,   # the time when it was forged
+    "time > memory"
+)
+
 
 # Streamlit Page Config
 st.set_page_config(

@@ -1,85 +1,159 @@
-# 🏡 Real Estate Price Prediction with Multiple Regression
+# 🏡 Real Estate Price Prediction — ML Regression Project
 
-A mini-project that demonstrates **multiple linear regression** on a synthetic housing dataset.  
-The project includes data generation, exploratory analysis, model training, and a Streamlit web app.
+A focused **machine learning regression project** for predicting real estate prices using a **multiple linear regression model**, backed by a **Streamlit web application** with a **three-page workflow**.
+
+This project covers the full mini-ML lifecycle: data generation, exploration, model training, evaluation, and interactive prediction — packaged cleanly for portfolio and professional use.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 ---
 
 ## 📂 Project Structure
 
+``` bash
+
 real-estate-regression/
 │
-├── data/
-│ ├── dataset.csv # Generated dataset
-│ └── generate_data.py # Script to generate synthetic dataset
+├── corpus/
+│   ├── raw_prices.csv              # Synthetic housing dataset
+│   └── synth_forge.py         # Dataset generation script
 │
-├── notebooks/
-│ └── exploration.ipynb # Jupyter notebook for EDA + baseline regression
+├── lab/
+│   └── ground_truth.ipynb        # EDA + baseline regression analysis
 │
-├── src/
-│ ├── init.py
-│ ├── data_loader.py # Load & split data
-│ ├── model.py # Regression model class
-│ └── utils.py # Helper functions (plots, metrics)
+├── forge/
+│   ├── **__init__**.py
+│   ├── measures.py           # Data loading and train-test split
+│   ├── regressor.py                 # Multiple linear regression model
+│   └── ingest.py                 # Metrics and helper utilities
 │
-├── app.py # Streamlit app
-├── requirements.txt # Dependencies
-├── .gitignore # Ignore unnecessary files
-└── README.md # Project documentation
+├── app.py                       # Streamlit application (3 pages)
+├── requirements.txt             # Project dependencies
+├── .gitignore                   # Ignored files
+└── README.md                    # Documentation
 
+````
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone repo & install dependencies
+### 1. Clone the repository and install dependencies
+
 ```bash
-git clone https://github.com/yourusername/real-estate-regression.git
+git clone https://github.com/Faraazz05/real-estate-regression.git
 cd real-estate-regression
 pip install -r requirements.txt
+````
 
-2. Generate dataset
-python data/generate_data.py
+### 2. Generate the dataset
 
-3. Explore in notebook
-jupyter notebook notebooks/exploration.ipynb
+```bash
+python corpus/synth_forge.py
+```
 
-4. Run Streamlit app
+### 3. Explore the data and model
+
+```bash
+jupyter notebook lab/ground_truth.ipynb
+```
+
+### 4. Run the Streamlit application
+
+```bash
 streamlit run app.py
+```
 
-📊 Features
+---
 
-Synthetic Real Estate Dataset
+## 📊 Dataset Overview
 
-House size (sq ft), bedrooms, bathrooms, distance to city, age of house, price
+The dataset is **synthetically generated** to simulate realistic housing price behavior.
 
-Exploratory Data Analysis
+**Features include:**
 
-Stats, correlation heatmap, price distribution
+* House size (square feet)
+* Number of bedrooms
+* Number of bathrooms
+* Distance from city center
+* Age of the house
 
-Model Training
+**Target variable:**
 
-Multiple linear regression
+* House price
 
-Metrics: RMSE, R²
+Noise is intentionally added to reflect real-world variability.
 
-Coefficients table
+---
 
-Residual analysis
+## 🧠 Machine Learning Model
 
-Interactive Streamlit App
+* Algorithm: **Multiple Linear Regression**
+* Type: **Supervised regression**
+* Train/Test split used for evaluation
 
-Dataset explorer
+**Evaluation metrics:**
 
-Model training & evaluation
+* RMSE (Root Mean Squared Error)
+* R² Score
 
-House price predictor with sliders
+Additional analysis includes:
 
+* Regression coefficients
+* Residual distribution
+* Feature influence interpretation
 
+---
 
-📌 Notes
+## 🖥️ Streamlit Application (3 Pages)
 
-Data is synthetic, generated with a formula + noise.
+The Streamlit app provides an interactive interface divided into three logical pages:
 
-This project is for educational purposes to demonstrate regression and interactive ML apps.
+1. **Dataset Explorer**
+
+   * View raw data
+   * Summary statistics
+   * Feature inspection
+
+2. **Model Training & Evaluation**
+
+   * Train regression model
+   * Display metrics (RMSE, R²)
+   * View coefficients and residuals
+
+3. **Price Prediction**
+
+   * Input house features using sliders
+   * Get real-time predicted price output
+
+---
+
+## 🧾 Authorship
+
+Forged with intent.
+
+```bash
+# 𓋹 Faraz
+__fz_anchor__ = (
+    1755693780,
+    "time > memory"
+) 
+```
+
+---
+
+## 📌 Notes
+
+* The dataset is **fully synthetic** and generated programmatically.
+* The project is intended to demonstrate:
+
+  * Regression modeling
+  * ML workflow clarity
+  * Streamlit-based ML app deployment
+* Designed as a **mini but complete ML project**, suitable for learning and portfolio use.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.

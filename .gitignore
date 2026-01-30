@@ -1,0 +1,5 @@
+# Ignore
+corpus/*.csv
+venv/
+__pycache__/
+*.pyc
